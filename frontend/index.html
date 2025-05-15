@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Quote Companion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pageFlip {
+      0% {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: rotateY(90deg);
+        opacity: 0.2;
+      }
+      100% {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+    }
+
+    .page-flip {
+      animation: pageFlip 0.6s ease-in-out;
+      transform-style: preserve-3d;
+    }
+</style>
+
+</head>
+<body class="bg-gradient-to-br from-amber-100 via-white to-amber-50 min-h-screen flex items-center justify-center px-4 py-8 font-serif">
+
+  <div class="relative bg-white shadow-2xl rounded-xl p-8 max-w-3xl w-full border-[8px] border-amber-200 border-l-[20px] border-l-amber-400">
+    
+    <!-- Title: Book Header -->
+    <h1 class="text-4xl font-bold text-amber-700 text-center mb-6 tracking-wide underline decoration-amber-300">
+      📖 Daily Quote Companion
+    </h1>
+
+    <!-- Quote Box -->
+    <div id="quote-box" class="bg-amber-50 p-6 rounded-lg shadow-inner border-l-4 border-amber-400">
+      <p id="quote-text" class="text-2xl italic text-gray-800 leading-relaxed mb-4">
+        Loading...
+      </p>
+      <p id="quote-author" class="text-right text-amber-700 font-medium text-lg"></p>
+      <div class="flex justify-end gap-4 mt-4 text-sm">
+        <button onclick="copyCurrentQuote()" class="text-amber-600 hover:underline">📋 Copy</button>
+        <button onclick="saveCurrentQuote()" class="text-yellow-500 hover:underline">⭐ Save</button>
+      </div>
+    </div>
+
+    <!-- Next Quote Button with Page Flip Animation -->
+    <div class="mt-6 flex justify-center">
+      <button onclick="nextQuoteWithAnimation()" 
+        class="relative group px-6 py-3 bg-amber-600 text-white font-semibold rounded shadow-lg transition-transform transform hover:scale-105 focus:outline-none overflow-hidden">
+        <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-all"></span>
+        📖 Next Quote
+      </button>
+    </div>
+
+    <!-- Generated Image (if available) -->
+    <div class="mt-6">
+      <img id="quoteImage" src="" alt="Generated image" class="rounded-md w-full max-h-80 object-cover shadow-md hidden" />
+    </div>
+
+    <!-- Search Bar -->
+    <div class="mt-10 flex gap-2">
+      <input type="text" id="search-input" placeholder="Search quotes (e.g., hope, success)"
+        class="w-full p-3 border border-amber-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-400" />
+      <button onclick="searchQuote()"
+        class="bg-amber-500 text-white px-4 py-3 rounded-lg hover:bg-amber-600 transition duration-200">🔍 Search</button>
+    </div>
+
+    <!-- Search Results -->
+    <div id="search-results" class="mt-8 text-left max-h-80 overflow-y-auto px-2"></div>
+
+    <!-- Favorites Section -->
+    <div class="mt-10">
+      <h2 class="text-2xl font-semibold text-green-700 mb-3">📚 Your Favorite Quotes</h2>
+      <button onclick="loadFavorites()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-4">
+        Load Favorites
+      </button>
+      <div id="favorites-list" class="bg-green-50 p-4 rounded shadow-inner max-h-60 overflow-y-auto"></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
