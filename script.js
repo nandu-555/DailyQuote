@@ -1,7 +1,7 @@
 let currentQuote = null;
 
 function fetchNewQuote() {
-  fetch('http://localhost:3000/qotd')
+  fetch('https://quote-api.onrender.com/qotd')
     .then(response => {
       if (!response.ok) throw new Error("Network response was not ok");
       return response.json();
@@ -28,7 +28,8 @@ function searchQuote() {
   const keyword = document.getElementById('search-input').value;
   if (!keyword) return;
 
-  fetch(`http://localhost:3000/search?q=${keyword}`)
+  fetch(`https://quote-api.onrender.com/search?q=${keyword}`)
+
     .then(res => res.json())
     .then(data => {
       const resultsDiv = document.getElementById('search-results');
