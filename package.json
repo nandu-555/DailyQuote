@@ -1,5 +1,16 @@
 {
   "dependencies": {
     "dotenv": "^16.5.0"
-  }
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
+
+  "homepage": "https://nandu-555.github.io/DailyQuote/",
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d frontend"
 }
+
+}
+
